@@ -8,7 +8,7 @@ from const import CLASSES, COLORS
 from settings import DEFAULT_CONFIDENCE_THRESHOLD, DEMO_IMAGE, MODEL, PROTOTXT
 
 
-@st.cache
+@st.cache_resource
 def process_image(image):
     blob = cv2.dnn.blobFromImage(
         cv2.resize(image, (300, 300)), 0.007843, (300, 300), 127.5
@@ -19,7 +19,7 @@ def process_image(image):
     return detections
 
 
-@st.cache
+@st.cache_resource
 def annotate_image(
     image, detections, confidence_threshold=DEFAULT_CONFIDENCE_THRESHOLD
 ):
